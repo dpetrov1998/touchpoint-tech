@@ -1,0 +1,22 @@
+{
+  "name": "touchpoint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.2.13",
+    "sass": "^1.77.4",
+    "rollup-plugin-external-globals": "^0.10.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}
