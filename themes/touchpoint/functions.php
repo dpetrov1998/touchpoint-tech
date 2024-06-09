@@ -16,6 +16,7 @@ function tp_init() {
 	include_once TP_THEME_DIR . 'options/menus.php';
 	include_once TP_THEME_DIR . 'options/post-types.php';
 	include_once TP_THEME_DIR . 'options/taxonomies.php';
+	include_once TP_THEME_DIR . 'options/post-meta.php';
 
 	include_once TP_THEME_DIR . 'includes/enqueues.php';
 	// include_once TP_THEME_DIR . 'includes/helpers.php';

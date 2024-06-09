@@ -1,6 +1,9 @@
 <?php
 add_action( 'after_setup_theme', 'tp_setup_theme' );
 function tp_setup_theme() {
+	// Boot Carbon Fields
+	\Carbon_Fields\Carbon_Fields::boot();
+
 	// Load translations
 	load_theme_textdomain( 'tp', TP_THEME_DIR . 'languages' );
 
