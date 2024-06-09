@@ -12,6 +12,7 @@ register_post_type( 'tp_album', array(
 		'not_found' =>  __( 'No Albums found', 'tp' ),
 		'not_found_in_trash' => __( 'No Albums found in trash', 'tp' ),
 	),
+	'has_archive' => true,
 	'public' => true,
 	'exclude_from_search' => false,
 	'show_ui' => true,
