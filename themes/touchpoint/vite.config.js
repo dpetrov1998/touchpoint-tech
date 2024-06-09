@@ -1,13 +1,11 @@
 import { defineConfig } from 'vite';
 import externalGlobals from 'rollup-plugin-external-globals';
 
-const BASE = '/';
-
 export default defineConfig({
-	base: BASE,
+	base: '/',
 	build: {
 		assetsDir: '.',
-		outDir: `dist`,
+		outDir: 'dist',
 		emptyOutDir: true,
 		rollupOptions: {
 			input: [
@@ -30,5 +28,5 @@ export default defineConfig({
 		externalGlobals({
 			jquery: 'jQuery',
 		}),
-	]
+	],
 });
