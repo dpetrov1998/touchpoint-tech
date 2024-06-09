@@ -1,6 +1,12 @@
 <?php
 define( 'TP_THEME_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 
+// Load composer dependencies
+if ( ! file_exists( TP_THEME_DIR . 'vendor/autoload.php' ) ) {
+	wp_die( 'The theme\'s PHP composer dependencies are missing.<br>Please add the <code>/themes/' . basename( TP_THEME_DIR ) . '/vendor</code> directory manually, or run this in your terminal:<pre>composer install</pre>' );
+}
+require_once TP_THEME_DIR . 'vendor/autoload.php';
+
 // Translations and native theme features
 include_once TP_THEME_DIR . 'includes/theme-support.php';
 
