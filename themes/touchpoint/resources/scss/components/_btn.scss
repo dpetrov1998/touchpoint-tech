@@ -1,0 +1,28 @@
+/* ------------------------------------------------------------ *\
+	Button
+\* ------------------------------------------------------------ */
+
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 24px;
+	border: 3px solid #CBC2F4;
+	border-radius: 45px;
+	padding-block: 10px;
+	padding-inline: 25px;
+	transition: background-color, $t-duration; 
+
+	span {
+		margin-right: 5px;
+	}
+
+	img {
+		width: 27px;
+		aspect-ratio: 1 / 1;
+		margin-top: -4px;
+	}
+	
+	&:hover {
+		background-color: #CBC2F4;
+	}
+}
