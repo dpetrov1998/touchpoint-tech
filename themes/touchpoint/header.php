@@ -16,7 +16,50 @@
 		<div class="wrapper__inner">
 			<header class="header">
 				<div class="shell">
-					<h1>Header Content</h1>
+					<div class="header__inner">
+						<div class="header__logo">
+							<a href="<?php echo home_url( '/' ); ?>" class="logo">
+								<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/logo.png" alt="<?php bloginfo('name'); ?>">
+							</a>
+						</div><!-- /.header__logo -->
+						
+						<div class="header__wrapper js-menu">
+							<div class="header__nav">
+								<?php
+								if ( has_nav_menu( 'main-menu' ) ) {
+									wp_nav_menu( array(
+										'theme_location'	=> 'main-menu',
+										'container' 	  	=> 'nav',
+										'container_class' 	=> 'nav',
+									) );
+								}
+								?>
+							</div><!-- /.header__nav -->
+
+							<div class="header__login">
+								<p>
+									<?php _e( 'Anonymous', 'tp' ); ?>
+								</p>
+
+								<figure>
+									<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/avatar-ph.png" alt="<?php _e( 'Avatar Placeholder', 'tp' ); ?>">
+								</figure>
+
+								<span></span>
+							</div><!-- /.header__login -->
+
+						</div><!-- /.header__wrapper -->
+
+						<div class="header__toggle">
+							<div class="menu-toggle js-toggle">
+								<span></span>
+
+								<span></span>
+
+								<span></span>
+							</div><!-- /.menu-toggle -->
+						</div><!-- /.header__toggle -->
+					</div><!-- /.header__inner -->
 				</div><!-- /.shell -->
 			</header><!-- /.header -->
 

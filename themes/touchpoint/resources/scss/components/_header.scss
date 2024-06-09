@@ -6,4 +6,143 @@
 	width: 100%;
 	position: relative;
 	z-index: 100;
+	font-size: 28px;
+
+	@include breakpoint-down(large-desktop) {
+		font-size: 24px;
+	}
+
+	@include breakpoint-down(small-desktop) {
+		font-size: 20px;
+	}
+
+
+	.header__inner {
+		display: flex;
+		align-items: center;
+		border-bottom: 3px solid $c-grey;
+		padding-block: 55px 31px;
+
+		@include breakpoint-down(large-desktop) {
+			padding-block: 45px 28px;
+		}
+
+		@include breakpoint-down(small-desktop) {
+			padding-block: 35px 26px;
+		}
+
+		@include breakpoint-down(tablet) {
+			justify-content: space-between;
+			padding-block: 15px;
+		}
+	}
+
+	.header__nav {
+		@include breakpoint-down(tablet) {
+			width: 100%;
+		}
+	}
+
+	.header__wrapper {
+		padding-left: 92px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		transition: transform $t-duration;
+
+		@include breakpoint-down(large-desktop) {
+			padding-left: 40px;
+		}
+
+		@include breakpoint-down(small-desktop) {
+			padding-left: 0;
+		}
+
+		@include breakpoint-down(tablet) {
+			align-items: center;
+			position: fixed;
+			z-index: 20;
+			top: 0;
+			right: 0;
+			flex-direction: column;
+			background-color: $c-grey;
+			height: 100vh;
+			width: 25%;
+			overflow: scroll;
+			scrollbar-width: none;
+			transform: translateX(100vw);
+			justify-content: flex-start;
+			padding: 200px 40px 0 60px;
+		}
+
+		@include breakpoint-down(mobile) {
+			padding-right: 25px;
+			width: 35%;
+		}
+
+		@include breakpoint-down(mobile-medium) {
+			width: 50%;
+		}
+
+		@include breakpoint-down(mobile-small) {
+			width: 100%;
+		}
+	}
+
+	.header__wrapper.is-active {
+		transform: translateX(0);
+	}
+	
+	.header__login {
+		display: flex;
+		align-items: center;
+
+		@include breakpoint-down(tablet) {
+			display: none;
+		}
+	}
+
+	.header__login figure {
+		width: 100px;
+		aspect-ratio: 1 / 1;
+		margin-left: 42px;
+
+		@include breakpoint-down(large-desktop) {
+			width: 80px;
+			margin-left: 30px;
+		}
+	}
+
+	.header__login span {
+		display: inline-block;
+		margin-top: 16px;
+		margin-left: 30px;
+		width: 0; 
+		height: 0;
+		border: 13px solid transparent;
+		border-top-color: $c-black;
+
+		@include breakpoint-down(large-desktop) {
+			margin-left: 20px;
+		}
+
+		@include breakpoint-down(small-desktop) {
+			margin-left: 15px;
+			border-width: 10px;
+		}
+	}
+
+	.header__login p {
+		font-weight: 700;
+		margin: 0;
+	}
+
+	.header__toggle {
+		display: none;
+
+		@include breakpoint-down(tablet) {
+			display: block;	
+		}
+	}
 }

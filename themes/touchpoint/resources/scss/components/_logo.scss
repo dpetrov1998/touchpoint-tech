@@ -5,6 +5,11 @@
 .logo {
 	display: inline-block;
 	text-decoration: none;
+	width: 192px;
+
+	@include breakpoint-down(small-desktop) {
+		width: 150px;	
+	}
 
 	> img {
 		display: block;

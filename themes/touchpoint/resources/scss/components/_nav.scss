@@ -1,9 +1,87 @@
 /* ------------------------------------------------------------ *\
 	Nav
-\* ------------------------------------------------------------ */
+	\* ------------------------------------------------------------ */
 
 .nav {
 	ul {
+		display: flex;
 		list-style: none;
+
+		@include breakpoint-down(tablet) {
+			flex-direction: column;
+			text-align: right;
+			height: auto;
+		}
+	}
+
+	li {
+		padding-inline: 37px;
+
+		@include breakpoint-down(large-desktop) {
+			padding-inline: 27px;
+		}
+
+		@include breakpoint-down(small-desktop) {
+			padding-inline: 20px;
+		}
+
+		@include breakpoint-down(tablet) {
+			padding-inline: 0;
+			padding-block: 5px;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		font-weight: 500;
+		transition: font-weight $t-duration;
+		display: flex;
+		flex-direction: column;
+
+		@include breakpoint-down(tablet) {
+			display: inline-flex;
+		}
+	}
+
+	li.current-menu-item {
+		& > a {
+			font-weight: 700;
+		}
+	}
+
+	a:after {
+		content: '';
+		position: relative; 
+		top: 74px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0;
+		border-bottom: 3px solid $c-black;
+		opacity: 0;
+		pointer-events: none;
+		transition-property: width, opacity;
+		transition-duration: $t-duration;
+
+		@include breakpoint-down(small-desktop) {
+			top: 62px;
+		}
+
+		@include breakpoint-down(tablet) {
+			left: 100%;
+			top: 0;
+			transform: translateX(-100%);
+		}
+	}
+
+	li:hover,
+	li.current-menu-item {
+		& > a:after {
+			width: 50%;
+			opacity: 1;
+
+			@include breakpoint-down(tablet) {
+				width: 100%;
+			}
+		}
 	}
 }
