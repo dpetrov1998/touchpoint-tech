@@ -1,18 +1,16 @@
 <?php
-
-/*
-register_post_type( 'tp_custom-type', array(
+register_post_type( 'tp_album', array(
 	'labels' => array(
-		'name' => __( 'Custom Types', 'tp' ),
-		'singular_name' => __( 'Custom Type', 'tp' ),
+		'name' => __( 'Albums', 'tp' ),
+		'singular_name' => __( 'Album', 'tp' ),
 		'add_new' => __( 'Add New', 'tp' ),
-		'add_new_item' => __( 'Add new Custom Type', 'tp' ),
-		'view_item' => __( 'View Custom Type', 'tp' ),
-		'edit_item' => __( 'Edit Custom Type', 'tp' ),
-		'new_item' => __( 'New Custom Type', 'tp' ),
-		'search_items' => __( 'Search Custom Types', 'tp' ),
-		'not_found' =>  __( 'No custom types found', 'tp' ),
-		'not_found_in_trash' => __( 'No custom types found in trash', 'tp' ),
+		'add_new_item' => __( 'Add new Album', 'tp' ),
+		'view_item' => __( 'View Album', 'tp' ),
+		'edit_item' => __( 'Edit Album', 'tp' ),
+		'new_item' => __( 'New Album', 'tp' ),
+		'search_items' => __( 'Search Albums', 'tp' ),
+		'not_found' =>  __( 'No Albums found', 'tp' ),
+		'not_found_in_trash' => __( 'No Albums found in trash', 'tp' ),
 	),
 	'public' => true,
 	'exclude_from_search' => false,
@@ -21,11 +19,11 @@ register_post_type( 'tp_custom-type', array(
 	'hierarchical' => false,
 	'_edit_link' => 'post.php?post=%d',
 	'rewrite' => array(
-		'slug' => 'custom-type',
+		'slug' => 'albums',
 		'with_front' => false,
 	),
 	'query_var' => true,
-	'menu_icon' => 'dashicons-admin-post',
-	'supports' => array( 'title', 'editor', 'page-attributes' ),
+	'menu_icon' => 'dashicons-images-alt2',
+	'supports' => array( 'title' ),
 ) );
-*/
+
