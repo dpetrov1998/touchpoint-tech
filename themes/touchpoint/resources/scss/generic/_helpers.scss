@@ -1,0 +1,72 @@
+/* ------------------------------------------------------------ *\
+	Helpers
+\* ------------------------------------------------------------ */
+
+/*  Clear  */
+
+.clear:after {
+	content: '';
+	line-height: 0;
+	display: table;
+	clear: both;
+}
+
+/* sr-only */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}
+
+/*  Notext  */
+
+.notext {
+	white-space: nowrap;
+	text-indent: 100%;
+	text-shadow: none;
+	overflow: hidden;
+}
+
+/*  Disabled  */
+
+[disabled],
+.disabled {
+	cursor: default;
+}
+
+/*  Responsive Helpers  */
+
+[hidden],
+.hidden {
+	display: none;
+}
+
+@include breakpoint-down(mobile) {
+	.hidden-xs {
+		display: none !important;
+	}
+}
+
+@include breakpoint-between(mobile,tablet) {
+	.hidden-sm {
+		display: none !important;
+	}
+}
+
+@include breakpoint-between(tablet,small-desktop) {
+	.hidden-md {
+		display: none !important;
+	}
+}
+
+@include breakpoint-up(small-desktop) {
+	.hidden-lg {
+		display: none !important;
+	}
+}
