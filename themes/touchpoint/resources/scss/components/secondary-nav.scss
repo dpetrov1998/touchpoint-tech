@@ -7,6 +7,14 @@
 	margin-left: 28px;
 	margin-block: 11px;
 
+	@include breakpoint-down(small-desktop) {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+	}
+
 	li {
 		padding-block: 17px;
 	}

@@ -31,7 +31,25 @@
 
 			<div class="section__body">
 				<div class="gallery">
-					
+					<div class="gallery_item">
+						<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/temp/image1.png">
+					</div><!-- /.gallery_item -->
+
+					<div class="gallery_item">
+						<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/temp/image2.png">
+					</div><!-- /.gallery_item -->
+
+					<div class="gallery_item">
+						<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/temp/image3.png">
+					</div><!-- /.gallery_item -->
+
+					<div class="gallery_item">
+						<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/temp/image4.png">
+					</div><!-- /.gallery_item -->
+
+					<div class="gallery_item">
+						<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/temp/image5.png">
+					</div><!-- /.gallery_item -->
 				</div><!-- /.gallery -->
 			</div><!-- /.section__body -->
 		</div><!-- /.section__inner -->
