@@ -27,11 +27,11 @@
 							<div class="header__nav">
 								<?php
 								if ( has_nav_menu( 'main-menu' ) ) {
-									wp_nav_menu( array(
+									wp_nav_menu( [
 										'theme_location'	=> 'main-menu',
 										'container' 	  	=> 'nav',
 										'container_class' 	=> 'nav',
-									) );
+									] );
 								}
 								?>
 							</div><!-- /.header__nav -->

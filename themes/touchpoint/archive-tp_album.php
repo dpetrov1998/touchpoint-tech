@@ -16,7 +16,7 @@ if ( ! have_posts() ) {
 	return;
 }
 
-get_template_part( 'fragments/popup', args: compact('categories') );
+get_template_part( 'fragments/popup', args: compact( 'categories' ) );
 ?>
 <section class="section-gallery">
 	<div class="shell">
