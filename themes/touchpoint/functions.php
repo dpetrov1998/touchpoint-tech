@@ -21,4 +21,5 @@ function tp_init() {
 	include_once TP_THEME_DIR . 'includes/enqueues.php';
 	include_once TP_THEME_DIR . 'includes/ajax.php';
 	include_once TP_THEME_DIR . 'includes/helpers.php';
+	include_once TP_THEME_DIR . 'includes/utilities.php';
 }

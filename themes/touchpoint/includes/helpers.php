@@ -1,5 +1,5 @@
 <?php 
-function tp_handle_blob_upload( $file ) {
+function tp_file_upload( $file ) {
 	if ( $file['error'] !== UPLOAD_ERR_OK ) {
 		return new WP_Error( 'upload_error', 'File upload failed. Error code: ' . $file['error'] );
 	}

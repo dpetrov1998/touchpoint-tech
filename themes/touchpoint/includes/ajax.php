@@ -1,4 +1,5 @@
 <?php 
+// Handle File Upload
 add_action('wp_ajax_tp_handle_file_upload', 'tp_handle_file_upload');
 add_action('wp_ajax_nopriv_tp_handle_file_upload', 'tp_handle_file_upload');
 
@@ -31,7 +32,7 @@ function tp_handle_file_upload() {
 			'size'     => $files['size'][$index]
 		];
 
-		$attachment_id = tp_handle_blob_upload( $file );
+		$attachment_id = tp_file_upload( $file );
 
 		if ( is_wp_error( $attachment_id ) ) {
 			wp_send_json_error( 'Failed to upload file: ' . $attachment_id->get_error_message() );

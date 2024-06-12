@@ -1,15 +1,18 @@
 <?php 
 get_header(); 
-$args = array(
-	'post_type'		 => 'tp_album',
-	'posts_per_page' => 5,
-	'orderby'		 => 'date',
-	'order'			 => 'DESC'
-);
+global $wp_query;
 
-$latest_albums_query = new WP_Query( $args );
+$terms = get_terms( [
+	'taxonomy' => 'tp_album_category',
+	'hide_empty' => true,
+] );
 
-if ( ! $latest_albums_query->have_posts() ) {
+$paged = get_query_var( 'paged' ) ?: 1;
+$max_num_pages = $wp_query->max_num_pages;
+
+$show_albums = $_GET['show-albums'] ?? 'latest';
+
+if ( ! have_posts() ) {
 	return;
 }
 ?>
@@ -50,30 +53,35 @@ if ( ! $latest_albums_query->have_posts() ) {
 					<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/btn-icon.svg" alt="Button Icon">
 				</a><!-- /.btn -->
 
-				<ul class="secondary-nav">
-					<li class="is-active">
-						<a href="#"><?php _e( 'Recently added', 'tp' ); ?></a>
+				<ul class="secondary-nav js-secondary-nav">
+					<li class="<?php echo $show_albums === 'latest' ? 'is-active' : ''; ?>">
+						<a href="#" data-slug="latest">
+							<?php _e( 'Recently added', 'tp' ); ?>
+						</a>
 					</li>
 
-					<li>
-						<a href="#"><?php _e( 'Albums', 'tp' ); ?></a>
+					<li class="<?php echo $show_albums === 'all' ? 'is-active' : ''; ?>">
+						<a href="#" data-slug="all">
+							<?php _e( 'Albums', 'tp' ); ?>
+						</a>
 					</li>
 
-					<li>
-						<a href="#"><?php _e( 'All Photos', 'tp' ); ?></a>
-					</li>
-
-					<li>
-						<a href="#"><?php _e( 'All Videos', 'tp' ); ?></a>
-					</li>
+					<?php foreach ( $terms as $term ) : ?>
+						<li class="<?php echo $show_albums === $term->slug ? 'is-active' : ''; ?>">
+							<a href="#" data-slug="<?php echo $term->slug; ?>">
+								<?php echo __( 'All ', 'tp' ) . $term->name; ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
 				</ul><!-- /.secondary-nav -->
 			</div><!-- /.section__aside -->
 
 			<div class="section__body">
-				<div class="gallery">
-					<?php while ( $latest_albums_query->have_posts() ) : 
-						$latest_albums_query->the_post(); 
+				<div class="gallery js-gallery">
+					<?php while ( have_posts() ) :
+						the_post();
 						$images = carbon_get_the_post_meta( 'tp_album_gallery' );
+
 						if ( empty( $images ) ) {
 							continue;
 						}
@@ -82,6 +90,10 @@ if ( ! $latest_albums_query->have_posts() ) {
 							<?php echo wp_get_attachment_image( $images[0] ); ?>
 						</div><!-- /.gallery_item -->
 					<?php endwhile; wp_reset_postdata(); ?>
+
+					<?php if ( $show_albums !== 'latest' && $max_num_pages > $paged ) : ?>
+						<a href="#" class="js-load-more" data-paged="<?php echo $paged; ?>"></a>
+					<?php endif; ?>
 				</div><!-- /.gallery -->
 			</div><!-- /.section__body -->
 		</div><!-- /.section__inner -->

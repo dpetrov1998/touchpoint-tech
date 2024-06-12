@@ -6,6 +6,10 @@
 	width: 100%;
 	flex-grow: 1;
 	flex-shrink: 0;
+
+	& > p {
+		padding-block: 50px;
+	}
 }
 
 body.error404 {
