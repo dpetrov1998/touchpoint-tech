@@ -1,48 +1,23 @@
 <?php 
 get_header(); 
+
 global $wp_query;
 
-$terms = get_terms( [
+$categories = get_terms( [
 	'taxonomy' => 'tp_album_category',
 	'hide_empty' => true,
 ] );
 
 $paged = get_query_var( 'paged' ) ?: 1;
 $max_num_pages = $wp_query->max_num_pages;
-
 $show_albums = $_GET['show-albums'] ?? 'latest';
 
 if ( ! have_posts() ) {
 	return;
 }
+
+get_template_part( 'fragments/popup', args: compact('categories') );
 ?>
-
-<div class="popup js-popup">
-	<div class="popup__inner">
-		<header class="popup__head">
-			<a href="#" class="btn-close js-popup-close"></a><!-- /.btn-close -->
-
-			<h4><?php _e( 'Add New Album', 'tp' ); ?></h4>
-		</header><!-- /.popup__head -->
-		
-		<div class="popup__body">
-			<div class="file-upload">
-				<input class="file_title js-upload-title-input" type="text" placeholder="Album title">
-
-				<div class="file__add-images">
-					<strong><?php _e( 'Add Images:', 'tp' ); ?></strong>
-
-					<input class="file_upload-input js-upload-input" type="file" multiple>
-				</div><!-- /.file__add-images -->
-
-				<a href="#" class="btn js-upload"><?php _e( 'Add new album', 'tp' ); ?></a>
-
-				<p class="file__message"></p>
-			</div><!-- /.gallery-small -->
-		</div><!-- /.popup__body -->
-	</div><!-- /.popup__inner -->
-</div><!-- /.popup -->
-
 <section class="section-gallery">
 	<div class="shell">
 		<div class="section__inner">
@@ -66,10 +41,10 @@ if ( ! have_posts() ) {
 						</a>
 					</li>
 
-					<?php foreach ( $terms as $term ) : ?>
-						<li class="<?php echo $show_albums === $term->slug ? 'is-active' : ''; ?>">
-							<a href="#" data-slug="<?php echo $term->slug; ?>">
-								<?php echo __( 'All ', 'tp' ) . $term->name; ?>
+					<?php foreach ( $categories as $category ) : ?>
+						<li class="<?php echo $show_albums === $category->slug ? 'is-active' : ''; ?>">
+							<a href="#" data-slug="<?php echo $category->slug; ?>">
+								<?php echo __( 'All ', 'tp' ) . $category->name; ?>
 							</a>
 						</li>
 					<?php endforeach; ?>
@@ -81,10 +56,6 @@ if ( ! have_posts() ) {
 					<?php while ( have_posts() ) :
 						the_post();
 						$images = carbon_get_the_post_meta( 'tp_album_gallery' );
-
-						if ( empty( $images ) ) {
-							continue;
-						}
 						?>
 						<div class="gallery_item">
 							<?php echo wp_get_attachment_image( $images[0] ); ?>

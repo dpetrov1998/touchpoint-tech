@@ -10,6 +10,7 @@ function tp_handle_file_upload() {
 	}
 
 	$title = sanitize_text_field( $_POST['title'] );
+	$category = $_POST['category'];
 	$files = $_FILES['files'];
 
 	$post_id = wp_insert_post( [
@@ -21,6 +22,11 @@ function tp_handle_file_upload() {
 	if ( is_wp_error( $post_id ) ) {
 		wp_send_json_error( 'Failed to create album post.' );
 		return;
+	}
+
+	if ( ! empty( $category ) ) {
+		$category = get_term_by( 'slug', $category, 'tp_album_category' );
+		wp_set_post_terms( $post_id, [ $category->term_id ], 'tp_album_category' );
 	}
 
 	foreach ( $files['name'] as $index => $file_name ) {
@@ -35,6 +41,7 @@ function tp_handle_file_upload() {
 		$attachment_id = tp_file_upload( $file );
 
 		if ( is_wp_error( $attachment_id ) ) {
+			wp_delete_post( $post_id );
 			wp_send_json_error( 'Failed to upload file: ' . $attachment_id->get_error_message() );
 			return;
 		}

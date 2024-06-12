@@ -10,6 +10,7 @@ $('.js-upload').on('click', (event) => {
 	event.preventDefault();
 
 	const title = $('.js-upload-title-input').val();
+	const category = $('.js-category-options').val();
 	const fileInput = $('.js-upload-input')[0];
 	const files = fileInput.files;
 	const data = new FormData();
@@ -19,6 +20,7 @@ $('.js-upload').on('click', (event) => {
 	}
 
 	data.append('title', title);
+	data.append('category', category);
 	data.append('action', 'tp_handle_file_upload');
 
 	$.ajax({
