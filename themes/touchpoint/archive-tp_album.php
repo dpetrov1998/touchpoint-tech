@@ -2,7 +2,7 @@
 get_header(); 
 $args = array(
 	'post_type'		 => 'tp_album',
-	'posts_per_page' => 6,
+	'posts_per_page' => 5,
 	'orderby'		 => 'date',
 	'order'			 => 'DESC'
 );
@@ -14,11 +14,37 @@ if ( ! $latest_albums_query->have_posts() ) {
 }
 ?>
 
+<div class="popup js-popup">
+	<div class="popup__inner">
+		<header class="popup__head">
+			<a href="#" class="btn-close js-popup-close"></a><!-- /.btn-close -->
+
+			<h4><?php _e( 'Add New Album', 'tp' ); ?></h4>
+		</header><!-- /.popup__head -->
+		
+		<div class="popup__body">
+			<div class="file-upload">
+				<input class="file_title js-upload-title-input" type="text" placeholder="Album title">
+
+				<div class="file__add-images">
+					<strong><?php _e( 'Add Images:', 'tp' ); ?></strong>
+
+					<input class="file_upload-input js-upload-input" type="file" multiple>
+				</div><!-- /.file__add-images -->
+
+				<a href="#" class="btn js-upload"><?php _e( 'Add new album', 'tp' ); ?></a>
+
+				<p class="file__message"></p>
+			</div><!-- /.gallery-small -->
+		</div><!-- /.popup__body -->
+	</div><!-- /.popup__inner -->
+</div><!-- /.popup -->
+
 <section class="section-gallery">
 	<div class="shell">
 		<div class="section__inner">
 			<div class="section__aside">
-				<a href="#" class="btn">
+				<a href="#" class="btn js-popup-trigger">
 					<span><?php _e( 'Add', 'tp' ); ?></span>
 
 					<img src="<?php bloginfo( 'stylesheet_directory' ); ?>/resources/images/btn-icon.svg" alt="Button Icon">
@@ -47,7 +73,10 @@ if ( ! $latest_albums_query->have_posts() ) {
 				<div class="gallery">
 					<?php while ( $latest_albums_query->have_posts() ) : 
 						$latest_albums_query->the_post(); 
-						$images = carbon_get_post_meta( get_the_ID(), 'tp_album_gallery' );
+						$images = carbon_get_the_post_meta( 'tp_album_gallery' );
+						if ( empty( $images ) ) {
+							continue;
+						}
 						?>
 						<div class="gallery_item">
 							<?php echo wp_get_attachment_image( $images[0] ); ?>

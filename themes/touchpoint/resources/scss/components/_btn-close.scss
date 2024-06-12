@@ -1,0 +1,32 @@
+/* ------------------------------------------------------------ *\
+	Close Button
+\* ------------------------------------------------------------ */
+
+.btn-close {
+	position: relative;
+	display: block;
+	width: 24px;
+	aspect-ratio: 1 / 1;
+
+	&:before,
+	&:after {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		width: 66%;
+		height: 2px;
+		background-color: currentColor;
+	}
+
+	&:before {
+		rotate: -45deg;
+	}
+
+	&:after {
+		rotate: 45deg;
+	}
+}
+

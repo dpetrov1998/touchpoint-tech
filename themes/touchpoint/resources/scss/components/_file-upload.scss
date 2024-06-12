@@ -1,0 +1,45 @@
+/* ------------------------------------------------------------ *\
+	File Upload
+\* ------------------------------------------------------------ */
+
+.file-upload {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 16px;
+
+	.file_title {
+		padding: 10px;
+		margin-bottom: 20px;
+		border: 1px solid #dadada;
+		border-radius: 5px;
+		width: 100%;
+	}
+
+	.file__add-images {
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.file_upload-input {
+		width: 215px;
+	}
+
+	.file__message {
+		margin-block: 20px;
+		display: none;
+	}
+
+	.file__message.error {
+		display: block;
+		color: red;
+	}
+
+	.file__message.success {
+		display: block;
+		color: green;
+	}
+}
