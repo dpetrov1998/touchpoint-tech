@@ -15,8 +15,8 @@ $('.js-popup-trigger').on('click', (event) => {
 /**
  * Handle click on the popup close button.
  */
-$('.js-popup-close').on('click', function (event) {
-	const $target = $(this).closest('.js-popup');
+$('.js-popup-close').on('click', (event) => {
+	const $target = $(event.target).closest('.js-popup');
 
 	event.preventDefault();
 	$target.removeClass('is-active');
